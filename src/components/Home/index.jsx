@@ -1,10 +1,8 @@
-import {Link} from 'react-router'
-import {Navigate} from 'react-router'
-import Cookies from 'js-cookie'
+import { Link } from "react-router";
 
-import Header from '../Header'
+import Header from "../Header";
 
-import './index.css'
+import "./index.css";
 
 const Home = () => {
   return (
@@ -38,7 +36,7 @@ const Home = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

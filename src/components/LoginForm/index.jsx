@@ -1,27 +1,23 @@
-import {useState} from 'react'
-import {Navigate, useNavigate} from 'react-router'
-import Cookies from 'js-cookie'
+import { useState } from "react";
+import { useNavigate, Navigate } from "react-router";
+import Cookies from "js-cookie";
 
-import './index.css'
+import "./index.css";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [showSubmitErr, setShowSubmitErr] = useState('false')
-  const [error_msg, setErrMsg] = useState('')
-  const navigate = useNavigate()
-  const jwtToken = Cookies.get('jwt_token')
-  if (jwtToken !== undefined) {
-    return <Navigate to="/" />
-  }
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showSubmitError, setShowSubmitError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
 
-  const onChangeUsername = event => {
-    setUsername(event.target.value)
-  }
+  const onChangeUsername = (event) => {
+    setUsername(event.target.value);
+  };
 
-  const onChangePassword = event => {
-    setPassword(event.target.value)
-  }
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
   const renderPasswordField = () => (
     <>
@@ -37,7 +33,7 @@ const LoginForm = () => {
         placeholder="Password"
       />
     </>
-  )
+  );
 
   const renderUsernameField = () => (
     <>
@@ -53,34 +49,36 @@ const LoginForm = () => {
         placeholder="Username"
       />
     </>
-  )
-  
-   const onSubmitSuccess = jwtToken => {
-    Cookies.set('jwt_token', jwtToken, {expires: 30})
+  );
+  const onSubmitSuccess = (jwtToken) => {
+    Cookies.set("jwt_token", jwtToken, { expires: 30 });
 
-    navigate('/', {replace: true})
-  }
-  const onSubmitFailure = error_msg => {
-    setShowSubmitErr(true)
-    setErrMsg(error_msg)
-  }
+    navigate("/", { replace: true });
+  };
+  const onSubmitFailure = (errorMsg) => {
+    setShowSubmitError(true);
+    setErrorMsg(errorMsg);
+  };
 
-  const submitForm = async event => {
-    event.preventDefault()
-    const userDetails = {username, password}
-    const url = 'https://apis.ccbp.in/login'
+  const submitForm = async (event) => {
+    event.preventDefault();
+    const userDetails = { username, password };
+    const url = "https://apis.ccbp.in/login";
     const options = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(userDetails),
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
     if (response.ok === true) {
-      onSubmitSuccess(data.jwt_token)
+      onSubmitSuccess(data.jwt_token);
     } else {
-      onSubmitFailure(data.error_msg)
+      onSubmitFailure(data.error_msg);
     }
+  };
+  const jwtToken = Cookies.get("jwt_token");
+  if (jwtToken !== undefined) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -106,10 +104,10 @@ const LoginForm = () => {
         <button type="submit" className="login-button">
           Login
         </button>
-        {showSubmitErr && <p className="error_message">*{error_msg}</p>}
+        {showSubmitError && <p className="error-message">*{errorMsg}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

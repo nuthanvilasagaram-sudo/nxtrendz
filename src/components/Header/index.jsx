@@ -1,15 +1,15 @@
-import {Link} from 'react-router'
-import Cookies from 'js-cookie'
-import {useNavigate} from 'react-router'
+import { Link } from "react-router";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 
-import './index.css'
+import "./index.css";
 
 const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onClickLogout = () => {
-    Cookies.remove('jwt_token')
-    navigate('/login', {replace: true})
-  }
+    Cookies.remove("jwt_token");
+    navigate("/login", { replace: true });
+  };
 
   return (
     <nav className="nav-header">
@@ -75,8 +75,8 @@ const Header = () => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
                 alt="nav home"
-                className="nav-bar-img"
-              />
+                className="nav-bar-img" 
+              /> 
             </Link>
           </li>
 
@@ -101,7 +101,7 @@ const Header = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
