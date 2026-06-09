@@ -1,17 +1,32 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { BeatLoader } from "react-spinners";
+import ProductsHeader from "../ProductsHeader";
 
 import ProductCard from "../ProductCard";
 import "./index.css";
+const sortbyOptions = [
+  {
+    optionId: 'PRICE_HIGH',
+    displayText: 'price (HIGH-LOW)',
+  },
+  {
+    optionId: 'PRICE_LOW',
+    displayText: 'price (LOW-HIGH)',
+  },
+]
 
 const AllProductsSection = () => {
   const [productsList, setProductsList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const[activeOptionId, setActiveOptionId] = useState(sortbyOptions[0].optionId);
+  const updateActiveOptionId = (activeOptionId) => {
+    setActiveOptionId(activeOptionId)
+  }
 
   useEffect(() => {
     const getProducts = async () => {
-      const apiUrl = "https://apis.ccbp.in/products";
+      const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}`;
       const jwtToken = Cookies.get("jwt_token");
       const options = {
         headers: {
@@ -35,12 +50,12 @@ const AllProductsSection = () => {
       }
     };
     getProducts();
-  }, []);
+  }, [activeOptionId]);
 
   const renderProductsList = () => {
     return (
       <div>
-        <h1 className="products-list-heading">All Products</h1>
+        <ProductsHeader sortbyOptions={sortbyOptions} activeOptionId={activeOptionId} updateActiveOptionId={updateActiveOptionId}/>
         <ul className="products-list">
           {productsList.map((product) => (
             <ProductCard productData={product} key={product.id} />

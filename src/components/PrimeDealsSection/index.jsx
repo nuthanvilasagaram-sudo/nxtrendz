@@ -38,6 +38,7 @@ const PrimeDealsSection = () => {
       };
       const response = await fetch(apiUrl, options);
       if (response.ok === true) {
+        
         const fetchedData = await response.json();
         const formattedData = fetchedData.prime_deals.map((product) => ({
           title: product.title,
