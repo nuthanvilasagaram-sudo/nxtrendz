@@ -1,15 +1,31 @@
-import { Link } from "react-router";
-import Cookies from "js-cookie";
-import { useNavigate } from "react-router";
+import {Link} from 'react-router'
+import Cookies from 'js-cookie'
+import {useNavigate} from 'react-router'
+import {use} from 'react'
 
-import "./index.css";
+import CartContext from '../../context/CartContext'
+
+import './index.css'
 
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const value = use(CartContext)
+  const {cartList} = value
+
   const onClickLogout = () => {
-    Cookies.remove("jwt_token");
-    navigate("/login", { replace: true });
-  };
+    Cookies.remove('jwt_token')
+    navigate('/login', {replace: true})
+  }
+  const renderCartItemsCount = () => {
+    const cartListCount = cartList.length
+    return (
+      <>
+        {cartListCount > 0 ? (
+          <span className="cart-count-badge">{cartListCount}</span>
+        ) : null}
+      </>
+    )
+  }
 
   return (
     <nav className="nav-header">
@@ -55,7 +71,7 @@ const Header = () => {
 
             <li className="nav-menu-item">
               <Link to="/cart" className="nav-link">
-                Cart
+                Cart {renderCartItemsCount()}
               </Link>
             </li>
           </ul>
@@ -75,8 +91,8 @@ const Header = () => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
                 alt="nav home"
-                className="nav-bar-img" 
-              /> 
+                className="nav-bar-img"
+              />
             </Link>
           </li>
 
@@ -96,12 +112,13 @@ const Header = () => {
                 alt="nav cart"
                 className="nav-bar-img"
               />
+              {renderCartItemsCount()}
             </Link>
           </li>
         </ul>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

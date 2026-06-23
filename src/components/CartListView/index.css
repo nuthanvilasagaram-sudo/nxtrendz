@@ -1,0 +1,24 @@
+.cart-list {
+  padding-left: 0px;
+}
+.b12 {
+  height: 30px;
+  width: 90px;
+  font-size: 14px;
+  background-color: #8a2be2;
+  color: white;
+  display: flex;
+  margin-left: auto;
+  font-weight: bold;
+  padding-top: 3px;
+}
+.b1 {
+  height: 30px;
+  width: 90px;
+  font-size: 14px;
+  background-color: #8a2be2;
+  color: white;
+  font-weight: bold;
+  padding-top: 3px;
+}
+
