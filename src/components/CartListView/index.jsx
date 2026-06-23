@@ -1,6 +1,6 @@
 import CartItem from '../CartItem'
 import {use} from 'react'
-import CartContext from '../../context/CartContext'
+import CartContext from '../../Context1/CartContext'
 import './index.css'
 
 /*const cartList = [

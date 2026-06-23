@@ -2,7 +2,7 @@ import Header from '../Header'
 import CartListView from '../CartListView'
 import EmptyCartView from '../EmptyCartView'
 
-import CartContext from '../../context/CartContext'
+import CartContext from '../../Context1/CartContext'
 
 import './index.css'
 import {use} from 'react'

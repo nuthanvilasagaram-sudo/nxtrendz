@@ -5,9 +5,9 @@ import Home from './components/Home'
 import Products from './components/Products'
 import Cart from './components/Cart'
 import ProtectedRoute from './components/ProtectedRoute'
-import ProductItemDetails from './components/ProductItemDetails'
+import ProductItemDetails from './components/ProductItemDetails1'
 import NotFound from './components/NotFound'
-import CartContext from './context/CartContext'
+import CartContext from './Context1/CartContext'
 
 import './App.css'
 

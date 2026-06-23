@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import {useNavigate} from 'react-router'
 import {use} from 'react'
 
-import CartContext from '../../context/CartContext'
+import CartContext from '../../Context1/CartContext'
 
 import './index.css'
 

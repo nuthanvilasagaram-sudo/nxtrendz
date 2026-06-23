@@ -2,7 +2,7 @@ import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 import {AiFillCloseCircle} from 'react-icons/ai'
 
 import {use} from 'react'
-import CartContext from '../../context/CartContext'
+import CartContext from '../../Context1/CartContext'
 
 import './index.css'
 
